@@ -17,13 +17,23 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package io.github.clockclap.cluve.common;
+package io.github.cluve.common.annotation;
 
+import io.github.cluve.common.PluginType;
 import org.jetbrains.annotations.NotNull;
 
-public interface CluveCommon {
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-    @NotNull
-    public CommonPlugin getPlugin();
+@Retention(RetentionPolicy.CLASS)
+@Target({
+        ElementType.TYPE,
+        ElementType.METHOD
+})
+public @interface SupportedTypes {
+
+    @NotNull PluginType[] value();
 
 }

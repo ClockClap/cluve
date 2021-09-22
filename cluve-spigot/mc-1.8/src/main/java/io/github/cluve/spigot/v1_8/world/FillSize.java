@@ -18,33 +18,43 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package io.github.clockclap.cluve.common;
+package io.github.cluve.spigot.v1_8.world;
 
-import org.jetbrains.annotations.NotNull;
+import org.bukkit.Location;
 
-public enum MinecraftVersion {
+public final class FillSize {
 
-    NULL(""),
-    V1_8("1.8"),
-    V1_9("1.9"),
-    V1_10("1.10"),
-    V1_11("1.11"),
-    V1_12("1.12"),
-    V1_13("1.13"),
-    V1_14("1.14"),
-    V1_15("1.15"),
-    V1_16("1.16"),
-    V1_17("1.17");
+    int x;
+    int y;
+    int z;
 
-    private final String name;
-
-    MinecraftVersion(@NotNull String name) {
-        this.name = name;
+    public FillSize(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
-    @NotNull
-    public String toString() {
-        return name;
+    public FillSize(Location a, Location b) {
+        this.x = b.getBlockX() - a.getBlockX();
+        this.y = b.getBlockY() - a.getBlockY();
+        this.z = b.getBlockZ() - a.getBlockZ();
     }
 
+    public FillSize(int xa, int ya, int za, int xb, int yb, int zb) {
+        this.x = xb - xa;
+        this.y = yb - ya;
+        this.z = zb - za;
+    }
+
+    public int getSizeX() {
+        return x;
+    }
+
+    public int getSizeY() {
+        return y;
+    }
+
+    public int getSizeZ() {
+        return z;
+    }
 }

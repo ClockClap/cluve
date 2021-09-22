@@ -17,42 +17,42 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package io.github.clockclap.cluve.spigot.v1_8;
+package io.github.cluve.common;
 
-import io.github.clockclap.cluve.common.CluveCommon;
-import io.github.clockclap.cluve.common.CommonPlugin;
-import io.github.clockclap.cluve.common.PluginType;
-import io.github.clockclap.cluve.spigot.v1_8.world.CluveWorld;
 import org.apache.commons.lang3.Validate;
-import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
+/**
+ *
+ */
+public class CommonPlugin {
 
-public class CluveSpigot implements CluveCommon {
+    private final String name;
+    private final String version;
+    private final PluginType type;
 
-    private final Plugin spigotPlugin;
-    private final CommonPlugin plugin;
-
-    public CluveSpigot(@NotNull Plugin plugin) {
-        Validate.notNull(plugin);
-        this.spigotPlugin = plugin;
-        this.plugin = new CommonPlugin(plugin.getName(), plugin.getDescription().getVersion(), PluginType.SPIGOT);
+    public CommonPlugin(@NotNull String name, @NotNull String version, @NotNull PluginType type) {
+        Validate.notNull(name);
+        Validate.notNull(version);
+        Validate.notNull(type);
+        this.name = name;
+        this.version = version;
+        this.type = type;
     }
 
     @NotNull
-    @Override
-    public CommonPlugin getPlugin() {
-        return plugin;
+    public String getName() {
+        return name;
     }
 
     @NotNull
-    public Plugin getSpigotPlugin() {
-        return spigotPlugin;
+    public String getVersion() {
+        return version;
     }
 
     @NotNull
-    public CluveWorld getCluveWorld(UUID uuid) {
-        return CluveWorld.getCluveWorld(uuid, this);
+    public PluginType getType() {
+        return type;
     }
+
 }

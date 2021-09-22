@@ -4,19 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.clockclap</groupId>
+    <groupId>io.github.cluve</groupId>
     <artifactId>cluve-parent</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <name>Cluve Parent</name>
     <description>Parent project for all Cluve modules.</description>
-    <url>https://github.com/ClockClap/cluve</url>
+    <url>https://github.com/Cluve/cluve</url>
+    <inceptionYear>2021</inceptionYear>
 
     <scm>
-        <connection>scm:git:https://github.com/ClockClap/cluve.git</connection>
-        <developerConnection>scm:git:https://github.com/ClockClap/cluve.git</developerConnection>
-        <url>https://github.com/ClockClap/cluve</url>
+        <connection>scm:git:git://github.com/Cluve/cluve.git</connection>
+        <developerConnection>scm:git:git@github.com:Cluve/cluve.git</developerConnection>
+        <url>https://github.com/Cluve/cluve</url>
     </scm>
 
     <licenses>

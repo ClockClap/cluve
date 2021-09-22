@@ -18,23 +18,29 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package io.github.clockclap.cluve.common.annotation;
+package io.github.cluve.spigot.v1_8.world;
 
-import io.github.clockclap.cluve.common.MinecraftVersion;
+public final class PatternLocation {
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+    int x;
+    int y;
+    int z;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE})
-public @interface SupportedVersions {
+    public PatternLocation(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
 
-    MinecraftVersion[] versions() default {};
+    public int getX() {
+        return x;
+    }
 
-    MinecraftVersion since() default MinecraftVersion.NULL;
+    public int getY() {
+        return y;
+    }
 
-    MinecraftVersion until() default MinecraftVersion.NULL;
-
+    public int getZ() {
+        return z;
+    }
 }

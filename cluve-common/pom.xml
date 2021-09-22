@@ -6,7 +6,7 @@
 
     <parent>
         <relativePath>../pom.xml</relativePath>
-        <groupId>io.github.clockclap</groupId>
+        <groupId>io.github.cluve</groupId>
         <artifactId>cluve-parent</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -14,7 +14,19 @@
 
     <name>Cluve</name>
     <description>A common module of Cluve.</description>
-    <url>https://github.com/ClockClap/Cluve</url>
+    <url>https://github.com/Cluve/cluve</url>
+
+    <organization>
+        <name>Cluve</name>
+        <url>https://cluve.github.io</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>ClockClap</name>
+            <email>i.am.clockclap@gmail.com</email>
+        </developer>
+    </developers>
 
     <licenses>
         <license>
@@ -22,6 +34,24 @@
             <url>https://www.gnu.org/licenses/lgpl-3.0.txt</url>
         </license>
     </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/Cluve/cluve.git</connection>
+        <developerConnection>scm:git:git@github.com:Cluve/cluve.git</developerConnection>
+        <url>https://github.com/Cluve/cluve</url>
+        <tag>cluve-common-1.0.0</tag>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
@@ -58,7 +88,7 @@
                 <configuration>
                     <serverId>ossrh</serverId>
                     <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
                 </configuration>
             </plugin>
             <plugin>
@@ -74,6 +104,12 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <gpgArguments>
+                        <arg>--pinentry-mode</arg>
+                        <arg>loopback</arg>
+                    </gpgArguments>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -109,16 +145,5 @@
             </resource>
         </resources>
     </build>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 
 </project>

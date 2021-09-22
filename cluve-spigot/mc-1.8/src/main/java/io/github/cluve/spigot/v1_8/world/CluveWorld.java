@@ -18,18 +18,18 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package io.github.clockclap.cluve.spigot.v1_8.world;
+package io.github.cluve.spigot.v1_8.world;
 
-import io.github.clockclap.cluve.common.CluveCommon;
-import io.github.clockclap.cluve.common.MinecraftVersion;
-import io.github.clockclap.cluve.common.PluginType;
-import io.github.clockclap.cluve.common.annotation.SupportedTypes;
-import io.github.clockclap.cluve.common.annotation.SupportedVersions;
+import io.github.cluve.common.CluveCommon;
+import io.github.cluve.common.MinecraftVersion;
+import io.github.cluve.common.PluginType;
+import io.github.cluve.common.annotation.SupportedTypes;
+import io.github.cluve.common.annotation.SupportedVersions;
+import io.github.cluve.spigot.v1_8.CluveSpigot;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -45,19 +45,28 @@ public class CluveWorld {
 
     private static Map<UUID, CluveWorld> worlds = new HashMap<>();
 
-    private final CluveCommon cluve;
+    private final CluveSpigot cluve;
     private final World world;
 
+    /**
+     * Creates new instance of {@link CluveWorld}
+     *
+     * @param cluve Cluve main class ({@link CluveSpigot})
+     * @param world target world
+     */
     public CluveWorld(@NotNull CluveCommon cluve, @NotNull World world) {
+        if(!(cluve instanceof CluveSpigot)) throw new IllegalArgumentException("cluve is not instance of CluveSpigot");
         Validate.notNull(cluve);
         Validate.notNull(world);
-        this.cluve = cluve;
+        this.cluve = (CluveSpigot) cluve;
         this.world = world;
         worlds.put(world.getUID(), this);
     }
 
     @NotNull
-    public static CluveWorld getCluveWorld(UUID uuid, CluveCommon cluve) {
+    public static CluveWorld getCluveWorld(@NotNull UUID uuid, @NotNull CluveCommon cluve) {
+        Validate.notNull(uuid);
+        Validate.notNull(cluve);
         if(worlds.containsKey(uuid)) return worlds.get(uuid);
         World world = Bukkit.getWorld(uuid);
         if(world == null) throw new IllegalArgumentException("world does not exist");
@@ -78,14 +87,40 @@ public class CluveWorld {
         }
     }
 
+    public void fillBlocks(int x, int y, int z, FillPattern pattern) {
+        Material[] blocks = pattern.pattern;
+        int l = 0;
+        for(int i = 0; i < pattern.size.x; i++) {
+            for(int j = 0; j < pattern.size.y; j++) {
+                for(int k = 0; k < pattern.size.z; k++, l++) {
+                    try {
+                        setBlock(x + i, y + j, z + k, blocks[l]);
+                    } catch (IndexOutOfBoundsException ignored) { }
+                }
+            }
+        }
+    }
+
     @NotNull
     public World getWorld() {
         return world;
     }
 
     @NotNull
-    public CluveCommon getCluve() {
+    public CluveSpigot getCluve() {
         return cluve;
+    }
+
+    public boolean equals(Object obj) {
+        if(obj instanceof CluveWorld) {
+            CluveWorld w = (CluveWorld) obj;
+            return match(this.getWorld(), w.getWorld());
+        }
+        return false;
+    }
+
+    public static boolean match(World w1, World w2) {
+        return w1.getUID().equals(w2.getUID());
     }
 
 }

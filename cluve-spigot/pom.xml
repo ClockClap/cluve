@@ -5,7 +5,7 @@
     <parent>
         <relativePath>../pom.xml</relativePath>
         <artifactId>cluve-parent</artifactId>
-        <groupId>io.github.clockclap</groupId>
+        <groupId>io.github.cluve</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -30,7 +30,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.github.clockclap</groupId>
+            <groupId>io.github.cluve</groupId>
             <artifactId>cluve-common</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>

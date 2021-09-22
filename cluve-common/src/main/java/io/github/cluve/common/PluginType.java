@@ -17,7 +17,40 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+package io.github.cluve.common;
+
 /**
- *
+ * All plugin types.
  */
-package io.github.clockclap.cluve.common;
+public enum PluginType {
+
+    BUKKIT(0, "Bukkit"),
+    SPIGOT(1, "Spigot"),
+    PAPER(2, "Paper"),
+    BUNGEE_CORD(10, "BungeeCord"),
+    WATERFALL(11, "Waterfall"),
+    VELOCITY(12, "Velocity"),
+    SPONGE(20, "Sponge"),
+    OTHERS(-1, "Others");
+
+    private String name;
+    private int id;
+
+    PluginType(int id, String name) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static boolean isProxy(PluginType type) {
+        return type.getId() >= 10 && type.getId() < 20;
+    }
+
+}
