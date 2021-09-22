@@ -26,6 +26,14 @@
 
     <modules>
         <module>mc-1.8</module>
+        <module>mc-1.9</module>
+        <module>mc-1.10</module>
+        <module>mc-1.11</module>
+        <module>mc-1.12</module>
+        <module>mc-1.13</module>
+        <module>mc-1.14</module>
+        <module>mc-1.15</module>
+        <module>mc-1.16</module>
     </modules>
 
     <dependencies>

@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cluve-spigot-1.8</artifactId>
+    <artifactId>cluve-spigot-1.11</artifactId>
 
-    <name>Cluve For Spigot Plugin (Minecraft 1.8)</name>
-    <description>A module of Cluve for Spigot (MC1.8) plugin.</description>
+    <name>Cluve For Spigot Plugin (Minecraft 1.11)</name>
+    <description>A module of Cluve for Spigot (MC1.11) plugin.</description>
     <url>https://github.com/Cluve/cluve</url>
     <inceptionYear>2021</inceptionYear>
 
@@ -155,7 +155,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.8-R0.1-SNAPSHOT</version>
+            <version>1.11-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
